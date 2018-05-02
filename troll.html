@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"></script>
+
+
+    <script>
+        var boundWidth = 600;
+        var boundHeight = 600;
+        var leftCol1 = ["阿", "獄"];
+        var leftCol2 = ["真", "的"];
+        var rightCol = ["很", "嚴", "格"];
+        var bottomRow = "比我想像中的嚴格!";
+        CretaeImg = function () {
+            var canvas = document.getElementById("myCanvas");
+            var context = canvas.getContext("2d");
+            var img = new Image();
+            img.setAttribute('crossOrigin', 'anonymous');
+            img.src = "https://Stoner609.github.io/troll-img/img/KP.jpg";
+            img.onload = function () {
+                context.drawImage(img, 0, 0, boundWidth, boundHeight);
+
+                context.font = "bold 44px 'Microsoft JhengHei'";
+                context.fillText(bottomRow, 80, 500);
+                context.font = "40px 微軟正黑體";
+                context.fillStyle = "#000000"
+
+
+                for (var i = 0; i < leftCol1.length; i++) {
+                    context.fillText(leftCol1[i], 60, 100 + i * 44);
+                }
+                for (var i = 0; i < leftCol2.length; i++) {
+                    context.fillText(leftCol2[i], 120, 140 + i * 44);
+                }
+                for (var i = 0; i < rightCol.length; i++) {
+                    context.fillText(rightCol[i], 440, 90 + i * 50);
+                }
+
+                // $("#saveas").prop("src", canvas.toDataURL());
+            }
+        }
+
+
+        function Text() {
+            console.log(this)
+            var root = this;
+            $("#leftCol1").change(function () {
+                leftCol1 = new Array();
+                leftCol1 = $(this).prop("value").split('');
+                root.CretaeImg();
+            });
+            $("#leftCol2").change(function () {
+                leftCol2 = new Array();
+                leftCol2 = $(this).prop("value").split('');
+                root.CretaeImg();
+            });
+            $("#bottomRow").change(function () {
+                bottomRow = $(this).prop("value");
+                root.CretaeImg();
+            });
+            $("#rightCol").change(function () {
+                rightCol = new Array();
+                rightCol = $(this).prop("value").split('');
+                root.CretaeImg();
+            });
+        }
+
+        $(function () {
+            $("#myCanvas").prop("width", boundWidth);
+            $("#myCanvas").prop("height", boundHeight);
+            CretaeImg();
+            Text();
+        })
+    </script>
+    <style>
+        body {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .imgturn {
+            width: 100%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Title</h1>
+        <h2>測試練習</h2>
+        <div class="row">
+            <div class="col-sm-4">
+                <input type="text" id="leftCol1" placeholder="阿嶽">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" id="leftCol2" placeholder="真的">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" id="rightCol" placeholder="很嚴格">
+            </div>
+            <div class="col-sm-12">
+                <input type="text" id="bottomRow" placeholder="比我想像中的嚴格!">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <img id="saveas" class="imgturn" />
+                <canvas id="myCanvas"></canvas>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
