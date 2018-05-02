@@ -1,5 +1,5 @@
 # 練習
-在圖片上嵌入文字，並輸入
+在圖片上嵌入文字，並輸出
 
 ## 參照專案
 [網址](https://github.com/imsinging/troll/tree/master)
