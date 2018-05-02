@@ -25,15 +25,15 @@
             var context = canvas.getContext("2d");
             var img = new Image();
             img.setAttribute('crossOrigin', 'anonymous');
-            img.src = "https://Stoner609.github.io/troll-img/img/KP.jpg";
+            img.src = "./img/KP.jpg";
             img.onload = function () {
                 context.drawImage(img, 0, 0, boundWidth, boundHeight);
 
                 context.font = "bold 44px 'Microsoft JhengHei'";
+                context.font = "40px cursive";
                 context.fillText(bottomRow, 80, 500);
-                context.font = "40px 微軟正黑體";
+                context.font = "40px cursive";
                 context.fillStyle = "#000000"
-
 
                 for (var i = 0; i < leftCol1.length; i++) {
                     context.fillText(leftCol1[i], 60, 100 + i * 44);
@@ -44,8 +44,6 @@
                 for (var i = 0; i < rightCol.length; i++) {
                     context.fillText(rightCol[i], 440, 90 + i * 50);
                 }
-
-                // $("#saveas").prop("src", canvas.toDataURL());
             }
         }
 
@@ -54,22 +52,22 @@
             console.log(this)
             var root = this;
             $("#leftCol1").change(function () {
-                leftCol1 = new Array();
+                leftCol1 = [];
                 leftCol1 = $(this).prop("value").split('');
                 root.CretaeImg();
             });
             $("#leftCol2").change(function () {
-                leftCol2 = new Array();
+                leftCol2 = [];
                 leftCol2 = $(this).prop("value").split('');
+                root.CretaeImg();
+            });
+            $("#rightCol").change(function () {
+                rightCol = [];
+                rightCol = $(this).prop("value").split('');
                 root.CretaeImg();
             });
             $("#bottomRow").change(function () {
                 bottomRow = $(this).prop("value");
-                root.CretaeImg();
-            });
-            $("#rightCol").change(function () {
-                rightCol = new Array();
-                rightCol = $(this).prop("value").split('');
                 root.CretaeImg();
             });
         }
@@ -116,7 +114,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <img id="saveas" class="imgturn" />
+                <!-- <img id="saveas" class="imgturn" /> -->
                 <canvas id="myCanvas"></canvas>
             </div>
         </div>
