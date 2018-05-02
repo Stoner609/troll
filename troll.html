@@ -44,6 +44,7 @@
                 for (var i = 0; i < rightCol.length; i++) {
                     context.fillText(rightCol[i], 440, 90 + i * 50);
                 }
+                $("#saveas").prop("src", canvas.toDataURL());
             }
         }
 
@@ -114,11 +115,14 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <!-- <img id="saveas" class="imgturn" /> -->
+                <img id="saveas" class="imgturn" />
                 <canvas id="myCanvas"></canvas>
             </div>
         </div>
-
+        <div class="row">
+            <a href="#" class="btn btn-primary" onClick="this.href=document.getElementById('saveas').src" download="KP.png">下載圖片(手機長按圖片另存新檔)</a>
+            <a href="https://m.facebook.com/childish.fake/" class="btn btn-link" onClick="ga('send', 'event', { 'eventCategory': 'FB連結', 'eventAction': '點FB連結', 'eventLabel':'點FB連結' });">FB:我是中二我很廢</a>
+        </div>
     </div>
 </body>
 
